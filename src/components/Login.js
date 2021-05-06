@@ -96,6 +96,7 @@ const Description = styled.p`
 `;
 
 const CTALogoTwo = styled.img`
+  align-items: center;
   max-width: 600px;
   margin-bottom: 20px;
   display: inline-block;
