@@ -8,4 +8,4 @@ const firebaseConfig = {
     measurementId: "G-T2Q77CTSP7"
   };
 
-  
+  const firebaseApp = firebase.intializeApp()
