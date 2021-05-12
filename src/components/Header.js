@@ -30,8 +30,7 @@ const Header = (props) => {
                     <span>WATCHLIST</span>
                 </a>
                 <a href="/originals">
-                    <img src="/images/original-icon.svg" alt="O
-                    riginals"/>
+                    <img src="/images/original-icon.svg" alt="Originals"/>
                     <span>ORIGINALS</span>
                 </a>
                 <a href="/movies">
@@ -43,9 +42,7 @@ const Header = (props) => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <Login onClick={handleAuth}>
-                  Login
-            </Login>
+            <Login onClick={handleAuth}>Login</Login>
         </Nav>
     );
 }
@@ -108,6 +105,7 @@ const NavMenu = styled.div`
       color: rgb(249, 249, 249);
       font-size: 13px;
       line-height: 1.08;
+      margin-left: 8px;
       letter-spacing: 1.42px;
       padding: 2px 0;
       white-space: nowrap;
@@ -153,6 +151,7 @@ const Login = styled.a`
 
   &:hover{
   background-color: #f9f9f9;
+  cursor:pointer;
   color: #000;
   border-color: transparent;
   }
