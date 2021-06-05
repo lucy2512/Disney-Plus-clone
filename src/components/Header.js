@@ -1,26 +1,49 @@
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { auth, provider } from "../firebase";
-
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from "../features/user/userSlice";
 
 const Header = (props) => {
-
-
-
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const userName = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
 
     const handleAuth = () => {
       auth.signInWithPopup(provider).then((result) => {
-          console.log(result);
+          setUser(result.user);
       }).catch((error) => {
         alert(error.message);
       });
     };
 
+    const setUser = (user) => {
+      dispatch(setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      }))
+    }
+
     
+
+
     return(
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+"/>
             </Logo>
+
+            { !userName ? (
+            <Login onClick={handleAuth}>Login</Login>
+             ): (
+             <> 
             <NavMenu>
                 <a href="/home">
                     <img src="/images/home-icon.svg" alt="Home"/>
@@ -47,10 +70,12 @@ const Header = (props) => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <Login onClick={handleAuth}>Login</Login>
+            <UserImg src={userPhoto} alt={userName}/>
+            </>
+)}
         </Nav>
     );
-}
+};
 
 const Nav = styled.nav`
   position: fixed;
@@ -91,7 +116,6 @@ const NavMenu = styled.div`
   position: relative;
   margin-right: auto;
   margin-left: 25px;
-
   @media (max-width: 768px){
      display: none;
    }
@@ -99,7 +123,6 @@ const NavMenu = styled.div`
      display: flex;
      algin-items: center;
      padding: 0 12px;
-
      img{
        height: 20px;
        min-width: 20px;
@@ -115,9 +138,7 @@ const NavMenu = styled.div`
       padding: 2px 0;
       white-space: nowrap;
       position: relative;
-
      
-
      &:before {
        background-color: rgb(249, 249, 249);
        border-radius: 0px 0px 4px 4px;
@@ -135,7 +156,6 @@ const NavMenu = styled.div`
        width: auto;
      }
   }
-
   &:hover {
     span:before {
       transform: scale(1);
@@ -153,12 +173,15 @@ const Login = styled.a`
   border: 1px solid #f9f9f9;
   border-radius: 4px;
   transition: all 0.2s ease 0s;
-
   &:hover{
   background-color: #f9f9f9;
   cursor:pointer;
   color: #000;
   border-color: transparent;
   }
+`;
+
+const UserImg = styled.img`
+  height: 100%;
 `;
 export default Header;
