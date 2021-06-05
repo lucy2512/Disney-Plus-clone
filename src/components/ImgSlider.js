@@ -1,11 +1,8 @@
-import React from 'react'
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 
-function ImgSlider() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
-export default ImgSlider
+export default configureStore({
+    reducer: {},
+    middleware: getDefaultMiddleware({
+        serializableCheck: false,
+    })
+})
