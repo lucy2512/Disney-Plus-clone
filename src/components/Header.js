@@ -1,3 +1,4 @@
+import {useEffect } from 'react';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -14,6 +15,15 @@ const Header = (props) => {
     const history = useHistory();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
+
+    useEffect(() => {
+      auth.onAuthStateChanged(async (user) => {
+        if(user){
+          setUser(user)
+          history.push('./home')
+        }
+      })
+    }, [userName]);
 
     const handleAuth = () => {
       auth.signInWithPopup(provider).then((result) => {
