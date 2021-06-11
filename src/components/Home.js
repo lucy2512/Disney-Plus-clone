@@ -4,6 +4,7 @@ import Recommends from './Recommends';
 import Viewers from './Viewers';
 import NewDisney from './NewDisney';
 import Originals from './Originals';
+import Trendings from './Trendings';
 
 const Home = (props) => {
     return(
@@ -13,6 +14,7 @@ const Home = (props) => {
           <Recommends/>
           <NewDisney />
           <Originals/>
+          <Trendings/>
         </Container>
     )
 }
