@@ -3,6 +3,7 @@ import ImgSlider from './ImgSlider';
 import Recommends from './Recommends';
 import Viewers from './Viewers';
 import NewDisney from './NewDisney';
+import Originals from './Originals';
 
 const Home = (props) => {
     return(
@@ -10,7 +11,8 @@ const Home = (props) => {
           <ImgSlider/>
           <Viewers/>
           <Recommends/>
-          <NewDisney/>
+          <NewDisney />
+          <Originals/>
         </Container>
     )
 }
