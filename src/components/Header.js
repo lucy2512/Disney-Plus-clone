@@ -69,7 +69,7 @@ const Header = (props) => {
                     <span>HOME</span>
                 </a>
                 <a href="/search">
-                    <img src="/images/search-icon.svg" alt="Search"/>
+                    <img src="/images/search-icon.svg" alt="Search"  onClick={"https://www.youtube.com/"}/>
                     <span>SEARCH</span>
                 </a>
                 <a href="/watchlist">
