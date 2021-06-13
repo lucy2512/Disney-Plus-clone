@@ -43,7 +43,7 @@ const Home = (props) => {
            break;
          }
        });
-    });
+    
 
     dispatch(
       setMovies({
@@ -52,7 +52,8 @@ const Home = (props) => {
         original: originals,
         trending: trending,
     })
-    );
+    )
+  });
   }, [userName])
 
     return(
