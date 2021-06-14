@@ -5,11 +5,12 @@ import Viewers from './Viewers';
 import NewDisney from './NewDisney';
 import Originals from './Originals';
 import Trendings from './Trendings';
+import Parthib from './Parthib';
 import {useEffect } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
 import db from '../firebase';
 import { setMovies } from '../features/movie/movieSlice';
-import { selectUserName, selectUserPhoto } from '../features/user/userSlice';
+import { selectUserName} from '../features/user/userSlice';
 
 const Home = (props) => {
 
@@ -64,6 +65,7 @@ const Home = (props) => {
           <NewDisney />
           <Originals/>
           <Trendings/>
+          <Parthib/>
         </Container>
     )
 }
