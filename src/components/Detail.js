@@ -23,6 +23,10 @@ const Detail =() => {
                         <img src="/images/play-icon-black.png" alt=""/>
                         <span>Play</span>
                     </Player>
+                    <Trailer>
+                        <img src="/images/play-icon-white.png" alt=""/>
+                        <span>Trailer</span>
+                    </Trailer>
                 </Controls>
             </ContentMeta>
         </Container>
@@ -122,4 +126,9 @@ const Player = styled.button`
     }
 `;
 
+const Trailer = styled(Player)`
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgb(249, 249, 249);
+    color: rgb(249, 249, 249);
+`;
 export default Detail;
