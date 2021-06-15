@@ -1,20 +1,38 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 const Detail =() => {
+
+    const { id } = useParams();
+    const [detailData, setDetailData] = useState({});
+
+    useEffect(() => {
+        db.collection("movies")
+          .doc(id)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              setDetailData(doc.data());
+            } else {
+              console.log("no such document in firebase 🔥");
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document:", error);
+          });
+      }, [id]);
+
+
     return(
         <Container>
             <Background>
-                <img
-                    alt=""
-                    src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4E9E81584305009D6385F6178D4B6930E97CD6EC4A3B53C818400DEF778FFA9A/scale?width=1440&aspectRatio=1.78&format=jpeg"
-                />
+                <img alt={detailData.title} src={detailData.backgroundImg} />
             </Background>
 
             <ImageTitle>
-                <img
-                alt=""
-                src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/50B933E83609BEEFEDFA177A6D96DBFA7804C14F70A0B5AB314E892E65498ACF/scale?width=1440&aspectRatio=1.78"
-                />
+                <img alt={detailData.title} src={detailData.titleImg}/>
             </ImageTitle>
 
             <ContentMeta>
