@@ -40,9 +40,9 @@ const Detail =() => {
                 <SubTitle>
                     SubTitle
                 </SubTitle>
-                {/* <Description>
+                <Description>
                     Description
-                </Description> */}
+                </Description>
             </ContentMeta>
         </Container>
     )
@@ -206,6 +206,17 @@ const SubTitle = styled.div`
 
   @media(max-width: 768px){
       font-size: 12px;
+  }
+`;
+
+const Description = styled.div`
+  line-height: 1.4;
+  font-size: 20px;
+  padding: 16px 0px;
+  color: rgb(249,249,249);
+
+  @media(max-width: 768px){
+      font-size:14px;
   }
 `;
 
